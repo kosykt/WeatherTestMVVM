@@ -2,17 +2,19 @@ package com.example.weathertestmvvm.presentation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.weathertestmvvm.data.repository.GetWeatherRepositoryImpl
+import com.example.weathertestmvvm.domain.models.Weather
+import com.example.weathertestmvvm.domain.repository.GetWeatherRepository
+import com.example.weathertestmvvm.domain.usecase.GetWeatherUseCase
 
-class MainViewModel: ViewModel() {
+class MainViewModel(
+    private val getWeatherRepository: GetWeatherRepository = GetWeatherRepositoryImpl()
+) : ViewModel() {
 
-    private val _testVM = MutableLiveData<String>()
-    val testVM = _testVM
+    private val _weatherVM = MutableLiveData<String>()
+    val weatherVM = _weatherVM
 
-    init {
-        _testVM.value = "test view model"
-    }
-
-    fun changeData(){
-        _testVM.value = "test change"
+    fun getWeather() {
+        _weatherVM.value = getWeatherRepository.getWeather().city
     }
 }

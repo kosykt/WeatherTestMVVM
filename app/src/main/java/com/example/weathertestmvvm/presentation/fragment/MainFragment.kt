@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.weathertestmvvm.R
 import com.example.weathertestmvvm.databinding.FragmentMainBinding
 import com.example.weathertestmvvm.presentation.MainViewModel
 
@@ -33,13 +32,12 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.testVM.observe(viewLifecycleOwner, Observer{
+        viewModel.weatherVM.observe(viewLifecycleOwner, Observer{
             binding.mainTextView.text = it
         })
 
         binding.mainButton.setOnClickListener {
-            viewModel.changeData()
-            Toast.makeText(context, viewModel.testVM.value, Toast.LENGTH_SHORT).show()
+            viewModel.getWeather()
         }
     }
 
