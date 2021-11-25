@@ -7,14 +7,15 @@ import com.example.weathertestmvvm.domain.models.Weather
 import com.example.weathertestmvvm.domain.repository.GetWeatherRepository
 import com.example.weathertestmvvm.domain.usecase.GetWeatherUseCase
 
-class MainViewModel(
+class MainViewModel() : ViewModel() {
+
     private val getWeatherRepository: GetWeatherRepository = GetWeatherRepositoryImpl()
-) : ViewModel() {
+    private val getWeatherUseCase: GetWeatherUseCase = GetWeatherUseCase(getWeatherRepository)
 
     private val _weatherVM = MutableLiveData<String>()
     val weatherVM = _weatherVM
 
     fun getWeather() {
-        _weatherVM.value = getWeatherRepository.getWeather().city
+        _weatherVM.value = getWeatherUseCase.execute().city
     }
 }
