@@ -1,8 +1,8 @@
 package com.example.weathertestmvvm.domain.repository
 
-import com.example.weathertestmvvm.domain.models.Weather
+import com.example.weathertestmvvm.domain.models.WeatherModel
 
 interface GetWeatherRepository {
 
-    fun getWeatherRetrofit(): Weather
+    fun getWeather(): WeatherModel
 }
