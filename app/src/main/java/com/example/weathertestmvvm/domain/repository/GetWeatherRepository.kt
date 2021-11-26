@@ -4,5 +4,5 @@ import com.example.weathertestmvvm.domain.models.Weather
 
 interface GetWeatherRepository {
 
-    fun getWeather(): Weather
+    fun getWeatherRetrofit(): Weather
 }

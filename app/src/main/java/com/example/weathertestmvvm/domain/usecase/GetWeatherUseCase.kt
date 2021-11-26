@@ -6,6 +6,6 @@ import com.example.weathertestmvvm.domain.repository.GetWeatherRepository
 class GetWeatherUseCase(private val getWeatherRepository: GetWeatherRepository) {
 
     fun execute(): Weather{
-        return getWeatherRepository.getWeather()
+        return getWeatherRepository.getWeatherRetrofit()
     }
 }
